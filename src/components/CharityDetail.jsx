@@ -1,27 +1,32 @@
-// CharityDetail.js
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-const apiKey = process.env.EVERY_ORG_KEY;
-const baseUrl = process.env.EVERY_ORG_URL;
 
-function CharityDetail({ match }) {
+const apiKey = process.env.REACT_APP_KEY;
+const baseUrl = process.env.REACT_APP_URL;
+
+const CharityDetail = ({ searchTerm }) => {
+	const { id } = useParams();
 	const [charity, setCharity] = useState(null);
 
 	useEffect(() => {
-		const charityId = match.params.id;
-
 		axios
-			.get(`${baseUrl}${apiKey}/charities/${charityId}`)
+			.get(`${baseUrl}/${searchTerm}?apiKey=${apiKey}`)
 			.then((response) => {
-				setCharity(response.data);
+				const selectedCharity = response.data.nonprofits.find(
+					(c) => c.ein.toString() === id.toString()
+				);
+				// console.log(response.data.nonprofits);
+				// console.log(selectedCharity);
+				setCharity(selectedCharity);
 			})
 			.catch((error) => {
 				console.error("Error fetching charity details:", error);
 			});
-	}, [match.params.id]);
+	}, [id, searchTerm]);
 
 	if (!charity) {
-		return <div>No charities found.</div>;
+		return <div>There is no charity you are searching for.</div>;
 	}
 
 	return (
@@ -30,6 +35,6 @@ function CharityDetail({ match }) {
 			<p>{charity.description}</p>
 		</div>
 	);
-}
+};
 
 export default CharityDetail;

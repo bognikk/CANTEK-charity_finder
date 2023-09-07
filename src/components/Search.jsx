@@ -3,19 +3,23 @@ import React, { useState } from "react";
 const Search = ({ onSearch }) => {
 	const [searchTerm, setSearchTerm] = useState("");
 
-	const handleSearch = () => {
+	const handleSubmit = (e) => {
+		e.preventDefault();
 		onSearch(searchTerm);
+		setSearchTerm("");
 	};
 
 	return (
 		<div>
-			<input
-				type="text"
-				placeholder="Search for charities..."
-				value={searchTerm}
-				onChange={(e) => setSearchTerm(e.target.value)}
-			/>
-			<button onClick={handleSearch}>Search</button>
+			<form onSubmit={handleSubmit}>
+				<input
+					type="text"
+					placeholder="Search for charities..."
+					value={searchTerm}
+					onChange={(e) => setSearchTerm(e.target.value)}
+				/>
+				<button type="submit">Search</button>
+			</form>
 		</div>
 	);
 };

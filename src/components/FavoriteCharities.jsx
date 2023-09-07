@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-function FavoriteCharities() {
+const FavoriteCharities = () => {
 	const [favoriteCharities, setFavoriteCharities] = useState([]);
 
 	useEffect(() => {
@@ -16,13 +17,12 @@ function FavoriteCharities() {
 			<ul>
 				{favoriteCharities.map((charity) => (
 					<li key={charity.id}>
-						{charity.name}
-						{/*Link to CharityDetail*/}
+						<Link to={`/charity/${charity.id}`}>{charity.name}</Link>
 					</li>
 				))}
 			</ul>
 		</div>
 	);
-}
+};
 
 export default FavoriteCharities;
