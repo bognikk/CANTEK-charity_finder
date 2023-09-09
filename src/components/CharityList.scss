@@ -1,0 +1,41 @@
+.charityList {
+	max-width: 60rem;
+	margin: 0 auto;
+	animation: meals-appear 1s ease-out forwards;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		.charityItem {
+			display: flex;
+			justify-content: space-between;
+			margin: 1rem 0;
+			padding-bottom: 1rem;
+			border-bottom: 1px solid #ccc;
+
+			div {
+				display: flex;
+				align-items: center;
+				width: 84%;
+
+				img {
+					width: 50px;
+					height: 50px;
+					margin-right: 1rem;
+					border-radius: 50%;
+				}
+
+				h3 {
+					margin: 0;
+					text-overflow: ellipsis;
+				}
+			}
+
+			a {
+				text-decoration: none;
+			}
+		}
+	}
+}

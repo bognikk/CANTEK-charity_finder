@@ -1,0 +1,48 @@
+.charityDetail {
+	&_image {
+		margin-bottom: 1rem;
+		img {
+			width: 100%;
+			border-radius: 20px;
+		}
+	}
+	&_title {
+		display: flex;
+		align-items: center;
+		margin: 0 0 1rem 0;
+
+		img {
+			width: 44px;
+			height: 44px;
+			margin-right: 1rem;
+			border-radius: 50%;
+		}
+
+		h2 {
+			margin: 0;
+		}
+
+		.button {
+			margin-left: auto;
+		}
+	}
+	&_description {
+		margin: 0 0 1rem 0;
+	}
+
+	a {
+		background-color: #276b5b;
+		border: 2px solid #276b5b;
+		color: #fff;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&.active {
+			color: #276b5b;
+			border-color: #276b5b;
+			background-color: #fff;
+			outline-color: #276b5b;
+		}
+	}
+}

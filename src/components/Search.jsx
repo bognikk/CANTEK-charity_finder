@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "./Search.scss";
+
 const Search = ({ onSearch }) => {
 	const [searchTerm, setSearchTerm] = useState("");
 
@@ -10,7 +12,7 @@ const Search = ({ onSearch }) => {
 	};
 
 	return (
-		<div>
+		<div className="search">
 			<form onSubmit={handleSubmit}>
 				<input
 					type="text"
@@ -18,7 +20,9 @@ const Search = ({ onSearch }) => {
 					value={searchTerm}
 					onChange={(e) => setSearchTerm(e.target.value)}
 				/>
-				<button type="submit">Search</button>
+				<button disabled={!searchTerm ? "disabled" : ""} type="submit">
+					Search
+				</button>
 			</form>
 		</div>
 	);
